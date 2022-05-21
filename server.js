@@ -28,3 +28,9 @@ app.get("/", (req, res) => {
 
 app.listen(PORT);
 console.log("running on port ", PORT);
+
+app.use((error, req, res, next) => {
+  res.status(200).json({ meesage: error.message });
+});
+
+module.exports = app;
