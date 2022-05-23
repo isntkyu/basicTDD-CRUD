@@ -63,3 +63,17 @@ it("should return 404 on PUT /api/products", async () => {
     .send({ name: "updated name", description: "updated description" });
   expect(response.statusCode).toBe(404);
 });
+
+it("DElete /api/products", async () => {
+  const response = await request(app)
+    .delete("/api/products" + firstProduct._id)
+    .send();
+  expect(response.statusCode).toBe(200);
+});
+
+it("delete id doesnt exiex ", async () => {
+  const response = await request(app)
+    .delete("/api/products/628b5abea28f5406fe11fd33")
+    .send();
+  expect(response.statusCode).toBe(404);
+});
