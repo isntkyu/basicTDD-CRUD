@@ -30,7 +30,7 @@ app.listen(PORT);
 console.log("running on port ", PORT);
 
 app.use((error, req, res, next) => {
-  res.status(200).json({ meesage: error.message });
+  res.status(500).json({ message: error.message });
 });
 
 module.exports = app;
